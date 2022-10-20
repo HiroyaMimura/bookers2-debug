@@ -32,7 +32,7 @@
             <% end %>
         </td>
         <td>
-          <p><%= link_to "#{book.book_comments.count} コメント", books_path(book.id) %></p>
+          <p><%= "コメント数：#{book.book_comments.count} " %></p>
         </td>
       </tr>
     <% end %>
