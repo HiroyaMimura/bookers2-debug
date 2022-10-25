@@ -22,6 +22,9 @@
         <td>
           <p><%= "コメント数：#{book.book_comments.count} " %></p>
         </td>
+        <td>
+          <%= render "books/rate", book: book %>
+        </td>
       </tr>
     <% end %>
   </tbody>

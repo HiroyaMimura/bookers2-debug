@@ -15,9 +15,10 @@ import '@fortawesome/fontawesome-free/js/all';
 import "../stylesheets/application"
 import Raty from "raty.js"
 window.raty = function(elem,opt) {
-  let raty =  new Raty(elem,opt)
+  let raty = new Raty(elem,opt)
   raty.init();
   return raty;
+
 }
 
 Rails.start()
