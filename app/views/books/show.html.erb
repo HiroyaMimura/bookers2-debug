@@ -22,7 +22,7 @@
           </td>
             <td>コメント数：<%= @book.book_comments.count %></td>
             <td>
-              <%= render "books/rate", book: @book %>
+              <%= render "rate", book: @book %>
             </td>
             <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
