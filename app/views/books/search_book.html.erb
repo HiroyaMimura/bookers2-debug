@@ -1,11 +1,12 @@
-<h2>Books search for "<%= @serach_word %>"</h2>
+<h2>Books search for "<%= @search_word %>"</h2>
   <table class='table table-hover table-inverse'>
     <thead>
       <tr>
         <th></th>
         <th>Title</th>
         <th>Opinion</th>
-        <th colspan="6"></th>
+        <th>Tag</th>
+        <th colspan="5"></th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +16,15 @@
           <td><%= link_to book.title,book_path(book.id) %></td>
           <td><%= book.body %></td>
           <td><%= book.tag %></td>
+          <td id = "favorite_buttons_<%= book.id %>">
+          <%= render "favorites/favorites", book: book %>
+        </td>
+        <td>
+          <p><%= "コメント数：#{book.book_comments.count} " %></p>
+        </td>
+        <td>
+          <%= render "books/rate", book: book %>
+        </td>
         </tr>
       <% end %>
     </tbody>
