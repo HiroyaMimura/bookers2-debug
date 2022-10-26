@@ -8,10 +8,9 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
     @book = Book.new
     @user = current_user
-  end
+    
 
   def create
     @book = Book.new(book_params)
