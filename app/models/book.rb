@@ -24,6 +24,10 @@ class Book < ApplicationRecord
     end
   end
 
+  def self.search(search_word)
+    Book.where(['tag LIKE ?', "#{search_word}"])
+  end
+
   scope :latest, -> {order(created_at: :desc)}
   scope :star_count, -> {order(score: :desc)}
 

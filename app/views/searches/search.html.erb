@@ -33,7 +33,7 @@
         <th></th>
         <th>Title</th>
         <th>Opinion</th>
-        <th colspan="3"></th>
+        <th colspan="5"></th>
       </tr>
     </thead>
     <tbody>
@@ -42,6 +42,7 @@
           <td><%= image_tag book.user.get_profile_image, size:'50x50' %></td>
           <td><%= link_to book.title,book_path(book.id) %></td>
           <td><%= book.body %></td>
+          <td><%= book.tag %></td>
         </tr>
       <% end %>
     </tbody>
