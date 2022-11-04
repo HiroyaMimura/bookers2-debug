@@ -18,13 +18,13 @@
           <td><%= book.tag %></td>
           <td id = "favorite_buttons_<%= book.id %>">
           <%= render "favorites/favorites", book: book %>
-        </td>
-        <td>
-          <p><%= "コメント数：#{book.book_comments.count} " %></p>
-        </td>
-        <td>
-          <%= render "books/rate", book: book %>
-        </td>
+          </td>
+          <td>
+            <p><%= "コメント数：#{book.book_comments.count} " %></p>
+          </td>
+          <td>
+            <%= render "books/rate", book: book %>
+          </td>
         </tr>
       <% end %>
     </tbody>

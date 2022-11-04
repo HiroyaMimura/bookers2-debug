@@ -16,15 +16,16 @@
     <%= f.label :rate %>
     <%= f.hidden_field :score, id: :review_star, class:'form-control' %>
   </div>
-  <div id="post_raty"></div>
-  <script>
-  $(document).on('turbolinks:load', function() {
+<div id="post_raty"></div>
+<script>
+  $(document).ready(function(){
     let raty_elem = document.querySelector('#post_raty');
     raty_elem.innerHTML = ""
     let option = {
       starOff: "<%= asset_path('star-off.png') %>",
       starOn: "<%= asset_path('star-on.png') %>",
       starHalf: "<%= asset_path('star-half.png') %>",
+      half: true,
       scoreName: 'book[score]',
     };
     raty(raty_elem,option);

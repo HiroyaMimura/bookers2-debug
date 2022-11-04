@@ -141,6 +141,7 @@ class Raty {
   }
 
   init() {
+    console.log("init")
     this._executeCallbacks();
     this._adjustNumber();
     this._adjustHints();
@@ -253,6 +254,8 @@ class Raty {
   }
 
   _attributesForIndex(i) {
+        console.log("vvvv")
+
     var name = this._nameForIndex(i);
     var attributes = { alt: i, src: this.opt.path + this.opt[name] };
 
@@ -354,6 +357,7 @@ class Raty {
 
   // TODO: model spec
   _bindOver() {
+    console.log("bindOber")
     const action = this.opt.half ? 'mousemove' : 'mouseover';
 
     this.stars.forEach((value) => {
@@ -362,6 +366,7 @@ class Raty {
 
         this._fill(score);
 
+console.log("bind over 2")
         if (this.opt.half) {
           this._roundStars(score, evt);
           this._setTitle(score, evt);
@@ -557,11 +562,11 @@ class Raty {
   // TODO: model spec
   _getScoreByPosition(evt, icon) {
     let score = parseInt(icon.alt || icon.getAttribute('data-alt'), 10);
-
+// console.log(icon.getAttribute('data-alt'))
+// console.log(parseInt(icon.alt || icon.getAttribute('data-alt'), 10))
     if (this.opt.half) {
       const size = this._getWidth();
       const percent = parseFloat((evt.pageX - icon.offsetLeft) / size);
-
       score = score - 1 + percent;
     }
 
@@ -570,6 +575,8 @@ class Raty {
 
   // TODO: model spec
   _getHint(score, evt) {
+    console.log(score)
+    console.log(Math.ceil(score))
     if (score !== 0 && !score) {
       return this.opt.noRatedMsg;
     }
@@ -614,6 +621,7 @@ class Raty {
 
   // TODO: model spec
   _lock() {
+    console.log("ssss")
     const hint = this._getHint(this.scoreField.value);
 
     this.element.style.pointerEvents = 'none';
@@ -638,6 +646,7 @@ class Raty {
 
   // TODO: model spec
   _resetTitle() {
+    console.log("tttt")
     for (let i = 0; i < this.opt.number; i++) {
       this.stars[i].title = this._getHint(i + 1);
     }
@@ -711,6 +720,9 @@ class Raty {
 
   // TODO: model spec
   _setTitle(score, evt) {
+        console.log("uuu")
+        console.log(score)
+
     if (score) {
       const integer = parseInt(Math.ceil(score), 10);
       const star = this.stars.item(integer - 1);
@@ -756,11 +768,15 @@ class Raty {
       const mouseover = evt && evt.type === 'mouseover';
 
       if (score === undefined) {
+        console.log("aaa")
         score = this.opt.targetText;
       } else if (score === null) {
+        console.log("bbb")
         score = mouseover ? this.opt.cancelHint : this.opt.targetText;
       } else {
+        console.log("ccc")
         if (this.opt.targetType === 'hint') {
+          console.log("ddd")
           score = this._getHint(score, evt);
         } else if (this.opt.precision) {
           score = parseFloat(score).toFixed(1);
