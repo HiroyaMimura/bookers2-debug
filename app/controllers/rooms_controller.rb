@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     @room = Room.create
     @entry1 = Entry.create(:room_id => @room.id, :user_id => current_user.id)
@@ -14,6 +14,7 @@ class RoomsController < ApplicationController
       @messages = @room.messages
       @message = Message.new
       @entries = @room.entries
+      @entriy2 = @entries.where.not(user_id: current_user.id).first
     else
       redirect_back(fallback_location: root_path)
     end
