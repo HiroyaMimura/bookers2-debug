@@ -357,7 +357,6 @@ class Raty {
 
   // TODO: model spec
   _bindOver() {
-    console.log("bindOber")
     const action = this.opt.half ? 'mousemove' : 'mouseover';
 
     this.stars.forEach((value) => {
@@ -366,7 +365,6 @@ class Raty {
 
         this._fill(score);
 
-console.log("bind over 2")
         if (this.opt.half) {
           this._roundStars(score, evt);
           this._setTitle(score, evt);
@@ -646,7 +644,6 @@ console.log("bind over 2")
 
   // TODO: model spec
   _resetTitle() {
-    console.log("tttt")
     for (let i = 0; i < this.opt.number; i++) {
       this.stars[i].title = this._getHint(i + 1);
     }
@@ -720,8 +717,6 @@ console.log("bind over 2")
 
   // TODO: model spec
   _setTitle(score, evt) {
-        console.log("uuu")
-        console.log(score)
 
     if (score) {
       const integer = parseInt(Math.ceil(score), 10);
@@ -768,15 +763,11 @@ console.log("bind over 2")
       const mouseover = evt && evt.type === 'mouseover';
 
       if (score === undefined) {
-        console.log("aaa")
         score = this.opt.targetText;
       } else if (score === null) {
-        console.log("bbb")
         score = mouseover ? this.opt.cancelHint : this.opt.targetText;
       } else {
-        console.log("ccc")
         if (this.opt.targetType === 'hint') {
-          console.log("ddd")
           score = this._getHint(score, evt);
         } else if (this.opt.precision) {
           score = parseFloat(score).toFixed(1);
