@@ -14,9 +14,9 @@ class RoomsController < ApplicationController
       @messages = @room.messages
       @message = Message.new
       @entries = @room.entries
-      @entriy2 = @entries.where.not(user_id: current_user.id).first
+      @another_entriy = @entries.where.not(user_id: current_user.id).first
     else
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: books_path)
     end
   end
 end

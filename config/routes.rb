@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
   get "search_book" => "books#search_book"
   resources :messages, :only => [:create]
-  resources :rooms, :only => [:create, :show, :index]
+  resources :rooms, :only => [:create, :show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 

@@ -3,12 +3,14 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @user = @book.user
+    
+    end
     @current_user_entry=Entry.where(user_id: current_user.id)
     @user_entry=Entry.where(user_id: @user.id)
     unless @user.id == current_user.id
       @current_user_entry.each do |cu|
         @user_entry.each do |u|
-          if cu.room_id == u.room_id then
+          if cu.room_id == u.room_id
             @is_room = true
             @room_id = cu.room_id
           end
@@ -37,6 +39,8 @@ class BooksController < ApplicationController
       sort_by {|x|
         x.favorites.where(created_at: from...to).size
       }.reverse
+    end
+   
     end
   end
 
