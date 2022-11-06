@@ -1,2 +1,11 @@
 <h2>Follower Users</h2>
-<%= render 'follow_list',users: @users %>
+<table class='table'>
+      <thead>
+        <tr>
+          <th>image</th>
+          <th>name</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+  <%= render 'follow_list',users: @users %>
+</table>

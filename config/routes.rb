@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   resources :book_comments, only: [:create, :destroy]
   end
   get "search_book" => "books#search_book"
-  resources :messages, :only => [:create]
-  resources :rooms, :only => [:create, :show]
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :show]
+  resources :groups, except: [:destroy] 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
