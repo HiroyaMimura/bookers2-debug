@@ -3,7 +3,8 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @user = @book.user
-    
+    unless ViewCount.find_by(user_id: current_user.id, book_id: @book.id)
+      current_user.view_counts.create(book_id: @book.id)
     end
     @current_user_entry=Entry.where(user_id: current_user.id)
     @user_entry=Entry.where(user_id: @user.id)
@@ -39,8 +40,6 @@ class BooksController < ApplicationController
       sort_by {|x|
         x.favorites.where(created_at: from...to).size
       }.reverse
-    end
-   
     end
   end
 
