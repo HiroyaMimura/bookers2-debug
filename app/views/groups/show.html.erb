@@ -36,6 +36,9 @@
               <%= link_to "Join this group", group_join_path(@group), class: "btn btn-outline-success"%>
             <% end %>
           </td>
+          <td>
+          <%= link_to 'Notice an Event',group_new_mail_path(@group), class: "btn btn-outline-info" %>
+          </td>
         </tr>
       </table>
     </div>
