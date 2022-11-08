@@ -29,7 +29,7 @@
           </td>
           <td>
             <% if @group.owener_id == current_user.id %>
-              <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-outline-success" %>
+              <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-outline-success" %>
             <% elsif @group.users.include?(current_user) %>
               <%= link_to "Leave this group", group_path(@group), method: :delete, class: "btn btn-outline-danger" %>
             <% else %>
@@ -37,7 +37,9 @@
             <% end %>
           </td>
           <td>
-          <%= link_to 'Notice an Event',group_new_mail_path(@group), class: "btn btn-outline-info" %>
+            <% if @group.owener_id == current_user.id %>
+            <%= link_to 'Notice an Event',group_new_mail_path(@group), class: "btn btn-outline-info" %>
+            <% end %>
           </td>
         </tr>
       </table>

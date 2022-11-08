@@ -15,8 +15,9 @@
   <div class="form-group" id="star">
     <%= f.label :rate %>
     <%= f.hidden_field :score, id: :review_star, class:'form-control' %>
+    <div id="post_raty"></div>
   </div>
-<div id="post_raty"></div>
+
 <script>
   $(document).ready(function(){
     let raty_elem = document.querySelector('#post_raty');
