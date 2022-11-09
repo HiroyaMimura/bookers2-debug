@@ -57,13 +57,13 @@
           </thead>
           <tbody>
             <tr>
-           　  <td><%= @today_book.count %></td>
-            　<td><%= @yesterday_book.count %></td>
+              <td><%= @books.created_days_ago(0).count %></td>
+            　<td><%= @books.created_days_ago(1).count %></td>
             　<td>
-                <% if @yesterday_book.count == 0 %>
+                <% if @books.created_days_ago(1).count == 0 %>
                   前日の投稿はありません
                 <% else %>
-                　<% the_day_before = @today_book.count / @yesterday_book.count.to_f  %>
+                　<% the_day_before = @books.created_days_ago(0).count / @books.created_days_ago(1).count.to_f  %>
                 　<%= (the_day_before * 100).round %>%
                 <% end %>
               </td>
@@ -122,7 +122,26 @@
         </table>
       </div>
 
-    
+      <div style="text-align: center;">7日間の投稿数の比較</div>
+      <canvas id="myChart" width="300" height="100"></canvas>
+      <script>
+        let ctx = document.getElementById("myChart").getContext('2d');
+        let myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
+                datasets: [{
+                    label: "投稿した本の数",
+                    data: <%= @books.created_week_count %>,
+                    backgroundColor: 'rgba(93, 53, 155, 0.3)',
+                    borderColor: 'rgba(82, 34, 167, 1.0)',
+                    fill: true,
+                    tension: '0.3'
+                    }]
+                  }
+                });
+      </script>
+
     </div>
   </div>
 </div>
