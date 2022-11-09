@@ -59,10 +59,9 @@ class GroupsController < ApplicationController
   def send_mail
     @group = Group.find(params[:group_id])
     group_users = @group.users
-    current_user_email = current_user.email
     @mail_title = params[:mail_title]
     @mail_content = params[:mail_content]
-    ContactMailer.send_mail(@mail_title, @mail_content, group_users, current_user_email).deliver
+    ContactMailer.send_mail(@mail_title, @mail_content, group_users).deliver
   end
 
   private
