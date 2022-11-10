@@ -33,18 +33,4 @@
       </tr>
     <% end %>
   </tbody>
-  
-  <%= form_with url: user_search_path(@user), method: :get do |f| %>
-  <%= f.date_field :created_at %>
-  <%= f.submit '検索', class: 'btn btn-outline-primary'  %>
-  <% end %>
-
-  <div id="search_result">
-  <% if @search_book.present? %>
-    <%= render 'users/search', search_book: @search_book %>
-  <% end %>
-  </div>
-
 </table>
-
-

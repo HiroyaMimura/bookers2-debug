@@ -45,7 +45,7 @@
         </tbody>
       </table>
 
-　　　<h2>投稿数の前日比・前週比</h2>
+    <h2>投稿数の前日比・前週比</h2>
       <div class = "table_width">
         <table class="table table-bordered">
           <thead>
@@ -58,13 +58,13 @@
           <tbody>
             <tr>
               <td><%= @books.created_days_ago(0).count %></td>
-            　<td><%= @books.created_days_ago(1).count %></td>
-            　<td>
+              <td><%= @books.created_days_ago(1).count %></td>
+              <td>
                 <% if @books.created_days_ago(1).count == 0 %>
                   前日の投稿はありません
                 <% else %>
-                　<% the_day_before = @books.created_days_ago(0).count / @books.created_days_ago(1).count.to_f  %>
-                　<%= (the_day_before * 100).round %>%
+                  <% the_day_before = @books.created_days_ago(0).count / @books.created_days_ago(1).count.to_f  %>
+                  <%= (the_day_before * 100).round %>%
                 <% end %>
               </td>
             </tr>
@@ -83,14 +83,14 @@
           </thead>
           <tbody>
             <tr>
-           　  <td><%= @this_week_book.count %></td>
-           　  <td><%= @last_week_book.count %></td>
+              <td><%= @this_week_book.count %></td>
+              <td><%= @last_week_book.count %></td>
               <td>
                 <% if @last_week_book.count == 0 %>
                   前週の投稿はありません
                 <% else %>
-               　  <% the_day_before = @this_week_book.count / @last_week_book.count.to_f  %>
-               　  <%= (the_day_before * 100).round %>%
+                  <% the_day_before = @this_week_book.count / @last_week_book.count.to_f  %>
+                  <%= (the_day_before * 100).round %>%
                 <% end %>
               </td>
             </tr>
@@ -142,6 +142,15 @@
                 });
       </script>
 
+        <%= form_with url: user_search_path(@user), method: :get, local: false do |f| %>
+        <%= f.date_field :created_at %>
+        <%= f.submit '検索', class: 'btn btn-sm btn-outline-primary' %>
+        <% end %>
+        <div id="search_result">
+          <% if @search_book.present? %>
+          <%= render 'search', search_book: @search_book %>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>
